@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> <link rel="stylesheet" href="./assets/css/Css.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body class="body container-fluid">
+  <h1> <u>Trabajo preentrega n°1</u></h1>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Mis comics</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon "></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav me-auto">
+          <form class="d-flex">
+            <input id="buscador"class="form-control me-2" placeholder="Encuentre su título" aria-label="Search">
+            <button id="btnBuscar" class="btn btn-outline-success">Buscar</button>
+          </form> 
+          
+        </ul>
+        <ul className="navbar-nav me-auto">  
+          <li className="nav-item " >
+              <a id="botonCarrito" data-bs-toggle="modal" data-bs-target="#idModal" class="btn btn-secondary"><i class="fas fa-shopping-cart fa-1x"></i></a>
+          </li>
+      </ul>
+       
+      </div>
+      <div>
+          
+      </div>
+    </div> 
+  </nav>
+  <div class="container">
+      <div class="row">
+          <div class="col-3">
+              <button type="button" class="btnn btn-dark" id="btnDarkMode">Dark</button>
+          </div>
+          <div class="col-3">
+              <button type="button" class="btnn btn-light" id="btnLightMode">Light</button>
+          </div>
+          <div class="col-3">
+              <button type="button" class="btn btn-light" id="btnRemoveItem"   >Eliminar preferencias</button>
+          </div>
+      </div>
+  </div>
+<div>
+  <div id="contenedor"></div>
+
+  <div class="modal fade" id="idModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Carrito de Compras</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="modal-body">
+          
+        </div>
+        <div class="row ml-ato">
+          <p id="precioTotal"></p>
+        </div>
+        <div class="modal-footer">
+          
+          
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" data-bs-dismiss="modal" class="btn btn-success" id="botonFinalizarCompra">Finalizar Compra</button>
+        </div>
+      </div>
+    </div>
+    </div>
+  <div id="carrito"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+   <script src="js.js"></script>
+</body>
+</html>

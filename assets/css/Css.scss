@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: none;
+}
+.body{
+    background-color: black;
+}
+#contenedor{
+    display: flex;
+
+    .card{
+    margin: 1px;
+    }
+}
