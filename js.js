@@ -28,7 +28,7 @@ if (localStorage.getItem("comics")){
     comics=JSON.parse(localStorage.getItem("comics"))
 }else{
     console.log("seteado perro")
-    comics.push(comic1, comic2, comic3, comic4 , comic5, comic6, comic7 , comic8 , comic9)
+    comics.push(comic1, comic2, comic3, comic4 , comic5, comic6, comic7 , comic8, comic9)
     localStorage.setItem("comics" , JSON.stringify(comics))
 }
 //Aca hice utilice el operador temerario pero me convencio mucho mas como estaba con el if y else ya puesto y lo deje ,pero dejo comentado el operador para que figure que se hacerlo
@@ -53,6 +53,16 @@ comics.forEach((comic)=>{
      compra.addEventListener("click", ()=>{
         console.log(comic)
         agregarAlCarrito(comic)
+        Toastify({
+            text: "Haz agregado este comic al carrito",
+            className: "info",
+            
+            style: {
+              background: "linear-gradient(to right, black, white)",
+              color: "black",
+              
+            }
+          }).showToast();
     
      })
      }
@@ -76,6 +86,28 @@ let botonCarrito = document.getElementById("botonCarrito")
 let modalBody = document.getElementById("modal-body")
 
 let botonFinalizarCompra = document.getElementById("botonFinalizarCompra")
+botonFinalizarCompra.addEventListener(`click` , ()=>{  //aca pusimos un sweet alert al realizar su compra
+    Swal.fire({
+        title: '¿Estas seguro de tu compra?',
+        text: "Haz click para seguir ",
+        icon: 'seccess',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si,lo quiero'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+          title:  'Su compra ha sido realizada',
+           text: 'Te enviaremos un mensaje por tu compra',
+            icon :'success',
+            confirmButtonText : 'Acepto'
+          }
+            
+          )
+        }
+      })
+})
 
 let parrafoCompra = document.getElementById(`precioTotal`)    
 
@@ -113,6 +145,9 @@ function compraTotal(array){
     // }
     acumulador == 0 ? parrafoCompra.innerHTML="" : parrafoCompra.innerHTML = `El total de su compra es ${acumulador}`
 }
+
+
+
 
 btnDarkMode.addEventListener ("click" , ()=>{
     console.log("Funciona btn oscuro")
