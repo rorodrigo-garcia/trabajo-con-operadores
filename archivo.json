@@ -1,0 +1,10 @@
+
+[{"id":1 , "titulo":"La era de Apocalipsis" ,"valor": 1500,"personaje": "x-men" ,"imagen": "apoxmen01.jpg"},
+{"id" :2 ,"titulo":"The dark Knight" , "valor":2000 , "personaje":"Batman","imagen" :"the dark night.jpg"},
+{"id":3,"titulo": "Spiderverse" , "valor":2500 ,"personaje": "Spiderman" ,"imagen": "spiderverce.jpg"},
+{"id":4,"titulo": "El hijo rojo" ,"valor":3000 ,"personaje": "Superman","imagen": "hijo rojo.jpg"},
+{"id":5,"titulo": "Watchmen" , "valor":3500 ,"personaje":"Watchmen","imagen": "watchmen.jpg"},
+{"id":6,"titulo":"La secta " ,"valor":4000 , "personaje":"Batman" ,"imagen": "la secta.jpg"},
+{"id":7,"titulo": "Las 4 estaciones" , "valor":4500 ,"personaje": "Superman" ,"imagen": "las 4 estaciones.jpg"},
+{"id":8 ,"titulo": "House of M" , "valor":5000 , "personaje":"x-men" , "imagen":"House of M.jpg"},
+{"id":9,"titulo": "el libro de ezequiel","valor": 5500 ,"personaje": "Spiderman","imagen" :"el libro de ezequiel.jpg"}]

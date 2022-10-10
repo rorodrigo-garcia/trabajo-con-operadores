@@ -10,26 +10,31 @@ class comic {
         console.log(`El numero del comic es ${this.id} , el titulo del es ${this.titulo} , el valor es ${this.valor} y el personaje que lo protagoniza es ${this.personaje}`)
     };
 }
+fetch("archivo.json")
+.then((resp)=> (resp.json()))
+.then((data) => {console.log(data)})
 
-const comic1 = new comic(1 , "La era de Apocalipsis" , 1500, "x-men" , "apoxmen01.jpg")
-const comic2 = new comic(2, "The dark Knight" , 2000 , "Batman", "the dark night.jpg")
-const comic3 = new comic(3, "Spiderverse" , 2500 , "Spiderman" , "spiderverce.jpg")
-const comic4 = new comic(4, "El hijo rojo" ,3000 , "Superman", "hijo rojo.jpg")
-const comic5 = new comic (5, "Watchmen" , 3500 , "Watchmen", "watchmen.jpg")
-const comic6 = new comic(6,"La secta " ,4000 , "Batman" , "la secta.jpg")
-const comic7 =new comic (7, "Las 4 estaciones" , 4500 , "Superman" , "las 4 estaciones.jpg")
-const comic8 = new comic(8 , "House of M" , 5000 , "x-men" , "House of M.jpg")
-const comic9 =new comic (9, "el libro de ezequiel", 5500 , "Spiderman", "el libro de ezequiel.jpg")
 
-let productoEnCarrito = localStorage.getItem("prudctoEnCarrito")||[]
+
 let comics = []
+const cargarComics = async() =>{
+    const resp = await fetch ("archivo.json")
+    const data = await resp.json()
+    for ( producto of data){
+        let comicNuevo = new comic (comic.id,comic.titulo,comic.valor,comic.personaje,comic.imagen)
+        comics.push(comicNuevo)
+    }
+localStorage.setItem("comics" , JSON.stringify(comics))
+}
+let productoEnCarrito = localStorage.getItem("prudctoEnCarrito")||[]
 
-if (localStorage.getItem("comics")){
-    comics=JSON.parse(localStorage.getItem("comics"))
-}else{
-    console.log("seteado perro")
-    comics.push(comic1, comic2, comic3, comic4 , comic5, comic6, comic7 , comic8, comic9)
-    localStorage.setItem("comics" , JSON.stringify(comics))
+if(localStorage.getItem("comics")){
+    comics = JSON.parse(localStorage.getItem("comics"))
+}
+else{
+    console.log("Seteando por primera vez el array")
+    //Invoco la function async
+    cargarComics()
 }
 //Aca hice utilice el operador temerario pero me convencio mucho mas como estaba con el if y else ya puesto y lo deje ,pero dejo comentado el operador para que figure que se hacerlo
 // localStorage.getItem("comics")? comics= JSON.parse(localStorage.getItem(comics)) : console.log("seteado perro"), comics.push(comic1,comic2,comic3,comic4,comic5,comic6,comic7,comic8,comic9),localStorage.setItem("comics" , JSON.stringify(comics))
