@@ -17,29 +17,30 @@ fetch("archivo.json")
 
 
 let comics = []
+let comicsLS
 const cargarComics = async() =>{
-    const resp = await fetch ("archivo.json")
+    const resp = await fetch ("./archivo.json")
     const data = await resp.json()
-    for ( producto of data){
-        let comicNuevo = new comic (comic.id,comic.titulo,comic.valor,comic.personaje,comic.imagen)
+    for ( let producto of data){
+        let comicNuevo = new comic(producto.id,producto.titulo,producto.valor,producto.personaje,producto.imagen)
         comics.push(comicNuevo)
     }
-localStorage.setItem("comics" , JSON.stringify(comics))
+    localStorage.setItem("comics" , JSON.stringify(comics))
 }
 let productoEnCarrito = localStorage.getItem("prudctoEnCarrito")||[]
 
-if(localStorage.getItem("comics")){
-    comics = JSON.parse(localStorage.getItem("comics"))
-}
-else{
-    console.log("Seteando por primera vez el array")
+if(localStorage.getItem("comics") != undefined){
+    comicsLS = JSON.parse(localStorage.getItem("comics")) || []
+}else{
+   
    
     cargarComics()
+    window.location.reload()
 }
 
 
 let contenedor = document.getElementById("contenedor")
-comics.forEach((comic)=>{
+comicsLS.forEach((comic)=>{
     let muestraComic = document.createElement("div")
     muestraComic.innerHTML =` <div id= "${comic.id}"class="card" style="width: 18rem;">
     <img src="./img/${comic.imagen}" class="card-img-top" alt="${comic.titulo} de ${comic.personaje} ">
