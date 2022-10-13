@@ -33,11 +33,10 @@ if(localStorage.getItem("comics")){
 }
 else{
     console.log("Seteando por primera vez el array")
-    //Invoco la function async
+   
     cargarComics()
 }
-//Aca hice utilice el operador temerario pero me convencio mucho mas como estaba con el if y else ya puesto y lo deje ,pero dejo comentado el operador para que figure que se hacerlo
-// localStorage.getItem("comics")? comics= JSON.parse(localStorage.getItem(comics)) : console.log("seteado perro"), comics.push(comic1,comic2,comic3,comic4,comic5,comic6,comic7,comic8,comic9),localStorage.setItem("comics" , JSON.stringify(comics))
+
 
 let contenedor = document.getElementById("contenedor")
 comics.forEach((comic)=>{
