@@ -6,11 +6,68 @@
 
 .body {
   background-color: rgba(3, 3, 3, 0.336);
+  height: auto;
+  width: 100%;
+}
+
+.navbar {
+  width: 100%;
+}
+
+.header .listaHeader {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.header .listaHeader li {
+  margin: 5px;
+}
+.header .listaHeader a {
+  color: red;
+}
+.header .listaHeader a:hover {
+  color: green;
+  border: 1px solid green;
+  border-radius: 5px;
+}
+
+.mainIndex .contenedorTituloMain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mainIndex .contenedorTituloMain .tituloMain {
+  font-size: 50px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.mainNosotros .contenedorTituloNosotros {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mainNosotros .contenedorTituloNosotros .tituloNosotros {
+  font-size: 50px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.mainNosotros .parrafoNosotros {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 20px;
+  background-color: rgba(37, 34, 34, 0.24);
+}
+
+.imgNos {
+  width: 500px;
 }
 
 #contenedor {
   display: flex;
+  flex-wrap: wrap;
 }
 #contenedor .card {
-  margin: 1px;
+  margin: 5px;
+  columns: 3;
+  width: 18rem;
+  border: 5px, solid, red;
 }/*# sourceMappingURL=Css.css.map */

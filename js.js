@@ -27,7 +27,7 @@ const cargarComics = async() =>{
     }
     localStorage.setItem("comics" , JSON.stringify(comics))
 }
-let productoEnCarrito = localStorage.getItem("prudctoEnCarrito")||[]
+let productoEnCarrito = localStorage.getItem("productoEnCarrito")||[]
 
 if(localStorage.getItem("comics") != undefined){
     comicsLS = JSON.parse(localStorage.getItem("comics")) || []
@@ -39,10 +39,11 @@ if(localStorage.getItem("comics") != undefined){
 }
 
 
+
 let contenedor = document.getElementById("contenedor")
 comicsLS.forEach((comic)=>{
     let muestraComic = document.createElement("div")
-    muestraComic.innerHTML =` <div id= "${comic.id}"class="card" style="width: 18rem;">
+    muestraComic.innerHTML =` <div id= "${comic.id}"class="card" style="width: 18rem; ">
     <img src="./img/${comic.imagen}" class="card-img-top" alt="${comic.titulo} de ${comic.personaje} ">
     <div class="card-body"
       <h4 class="card-title">${comic.titulo}</h4>
@@ -74,6 +75,36 @@ comicsLS.forEach((comic)=>{
    
 
 })
+    const buscador = document.querySelector('#buscador');
+    const botonBuscador = document.querySelector('#botonBuscador');
+    const resultadoComic = document.querySelector('#resultado')
+    const filtrar = ()=>{
+        resultadoComic.innerHTML = ''
+        const texto = buscador.value.toLowerCase();
+        for(let comicBuscado of comics ) {
+            let nombre = comicBuscado.nombre.toLowerCase();
+            if ( nombre.indexOf(texto) !== -1){
+                resultadoComic.innerHTML += ` <div id= "${comic.id}"class="card" style="width: 18rem;">
+                <img src="./img/${comic.imagen}" class="card-img-top" alt="${comic.titulo} de ${comic.personaje} ">
+                <div class="card-body"
+                  <h4 class="card-title">${comic.titulo}</h4>
+                  <h5>${comic.personaje}
+                  <p class="card-text">El valor del comic es de ${comic.valor}</p>
+                  <button id="agregarBtn ${comic.id}" " class="agregarBtn btn-outline-success btnComprar ${comic.id}">Agregar al carrito</button>
+                  </div>
+              </div>`
+
+            }
+        }
+        if(resultadoComic.innerHTML === ''){
+            resultadoComic.innerHTML += ` <li> Producto no encontrado ... <li>`
+        }
+    }
+    botonBuscador.addEventListener("click" , filtrar)
+    buscador.addEventListener('keyip' , filtrar)
+    filtrar();
+    
+    
 
 
 
@@ -91,7 +122,7 @@ let botonCarrito = document.getElementById("botonCarrito")
 let modalBody = document.getElementById("modal-body")
 
 let botonFinalizarCompra = document.getElementById("botonFinalizarCompra")
-botonFinalizarCompra.addEventListener(`click` , ()=>{  //aca pusimos un sweet alert al realizar su compra
+botonFinalizarCompra.addEventListener(`click` , ()=>{  
     Swal.fire({
         title: '¿Estas seguro de tu compra?',
         text: "Haz click para seguir ",
@@ -154,26 +185,7 @@ function compraTotal(array){
 
 
 
-btnDarkMode.addEventListener ("click" , ()=>{
-    console.log("Funciona btn oscuro")
-    document.body.style.backgroundColor="black" 
-    document.body.style.color="red" 
-    
-    localStorage.setItem("darkMode" , true)
-})
-btnLightMode.addEventListener ("click" , ()=>{
-    console.log("Funciona btn claro")
-    document.body.style.backgroundColor="white" 
-    document.body.style.color="black" 
 
-    localStorage.setItem("darkMode" , false) 
-})
-
-let btnEliminarMode = document.getElementById("btnRemoveItem")
-btnEliminarMode.addEventListener("click" , ()=>{
-    localStorage.removeItem("darkMode") 
-    localStorage.clear() 
-})
 
 
 

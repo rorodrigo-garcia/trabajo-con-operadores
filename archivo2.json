@@ -1,4 +1,3 @@
-
 [{"id":1 , "titulo":"La era de Apocalipsis" ,"valor": 1500,"personaje": "x-men" ,"imagen": "apoxmen01.jpg"},
 {"id" :2 ,"titulo":"The dark Knight" , "valor":2000 , "personaje":"Batman","imagen" :"the dark night.jpg"},
 {"id":3,"titulo": "Spiderverse" , "valor":2500 ,"personaje": "Spiderman" ,"imagen": "spiderverce.jpg"},
