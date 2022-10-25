@@ -1,0 +1,26 @@
+{
+  "name": "trabajofinal",
+  "version": "1.0.0",
+  "description": "Aca contengo el trabajo de entrega para CoderHouse",
+  "main": "contacto.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rorodrigo-garcia/trabajo-con-operadores.git"
+  },
+  "keywords": [
+    "trabajo",
+    "final"
+  ],
+  "author": "Rodrigo Garcia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rorodrigo-garcia/trabajo-con-operadores/issues"
+  },
+  "homepage": "https://github.com/rorodrigo-garcia/trabajo-con-operadores#readme",
+  "dependencies": {
+    "sweetalert2": "^11.6.1"
+  }
+}

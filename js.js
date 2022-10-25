@@ -18,6 +18,7 @@ fetch("archivo.json")
 
 let comics = []
 let comicsLS
+
 const cargarComics = async() =>{
     const resp = await fetch ("./archivo.json")
     const data = await resp.json()
@@ -78,31 +79,48 @@ comicsLS.forEach((comic)=>{
     const buscador = document.querySelector('#buscador');
     const botonBuscador = document.querySelector('#botonBuscador');
     const resultadoComic = document.querySelector('#resultado')
-    const filtrar = ()=>{
-        resultadoComic.innerHTML = ''
-        const texto = buscador.value.toLowerCase();
-        for(let comicBuscado of comics ) {
-            let nombre = comicBuscado.nombre.toLowerCase();
-            if ( nombre.indexOf(texto) !== -1){
-                resultadoComic.innerHTML += ` <div id= "${comic.id}"class="card" style="width: 18rem;">
-                <img src="./img/${comic.imagen}" class="card-img-top" alt="${comic.titulo} de ${comic.personaje} ">
-                <div class="card-body"
-                  <h4 class="card-title">${comic.titulo}</h4>
-                  <h5>${comic.personaje}
-                  <p class="card-text">El valor del comic es de ${comic.valor}</p>
-                  <button id="agregarBtn ${comic.id}" " class="agregarBtn btn-outline-success btnComprar ${comic.id}">Agregar al carrito</button>
-                  </div>
-              </div>`
+    buscador.addEventListener('keyup', e => {
 
-            }
+        let prueba = e.target.value
+    
+         botonBuscador.addEventListener("click" , e => {
+    
+            e.preventDefault()
+    
+            contenedor.innerHTML = ''
+            
+             const texto = buscador.value.toLowerCase();
+            
+            if(comicsLS.includes(prueba)){
+    
+                contenedor.innerHTML += ` <div id= "${[comicsls.id](comicsls.id)}"class="card" style="width: 18rem;">
+    
+                <img src="./img/${comicsLS.imagen}" class="card-img-top" alt="${comicsLS.titulo} de ${comicsLS.personaje} ">
+    
+                <div class="card-body"
+    
+                    <h4 class="card-title">${comicsLS.titulo}</h4>
+    
+                    <h5>${comicsLS.personaje}
+    
+                    <p class="card-text">El valor del comicsLS es de ${comicsLS.valor}</p>
+    
+                    <button id="agregarBtn ${[comicsls.id](comicsls.id)}" " class="agregarBtn btn-outline-success btnComprar ${[comicsls.id](comicsls.id)}">Agregar al carrito</button>
+    
+                    </div>
+    
+               </div>`
+    
+            } else{
+    
+            contenedor.innerHTML += ` <li> Producto no encontrado ... <li>`
+    
         }
-        if(resultadoComic.innerHTML === ''){
-            resultadoComic.innerHTML += ` <li> Producto no encontrado ... <li>`
-        }
-    }
-    botonBuscador.addEventListener("click" , filtrar)
-    buscador.addEventListener('keyip' , filtrar)
-    filtrar();
+    
+        })
+    
+     })
+    
     
     
 
