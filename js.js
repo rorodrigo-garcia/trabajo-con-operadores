@@ -17,7 +17,7 @@ fetch("archivo.json")
 
 
 let comics = []
-let comicsLS
+let comicsLS 
 
 const cargarComics = async() =>{
     const resp = await fetch ("./archivo.json")
@@ -91,7 +91,7 @@ comicsLS.forEach((comic)=>{
             
              const texto = buscador.value.toLowerCase();
             
-            if(comicsLS.includes(prueba)){
+            if(comicsLS.includes(texto , prueba)){
     
                 contenedor.innerHTML += ` <div id= "${[comicsls.id](comicsls.id)}"class="card" style="width: 18rem;">
     
