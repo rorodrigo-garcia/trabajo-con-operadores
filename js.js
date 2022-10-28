@@ -1,13 +1,14 @@
-class comic {
-    constructor (id,titulo,valor, personaje, imagen){
+class funko {
+    constructor (id,titulo,valor, personaje, imagen,editorial){
         this.id=id,
         this.titulo=titulo,
         this.valor = valor,
         this.personaje= personaje,
         this.imagen= imagen
+        this.editorial=editorial
     }
     mostrarDatos(){
-        console.log(`El numero del comic es ${this.id} , el titulo del es ${this.titulo} , el valor es ${this.valor} y el personaje que lo protagoniza es ${this.personaje}`)
+        console.log(`El numero del funko es ${this.id} , el titulo del es ${this.titulo} , el valor es ${this.valor} y el personaje que lo protagoniza es ${this.personaje}`)
     };
 }
 fetch("archivo.json")
@@ -16,52 +17,52 @@ fetch("archivo.json")
 
 
 
-let comics = []
-let comicsLS 
+let funkos = []
+let funkoLS 
 
-const cargarComics = async() =>{
+const cargarFunkos = async() =>{
     const resp = await fetch ("./archivo.json")
     const data = await resp.json()
     for ( let producto of data){
-        let comicNuevo = new comic(producto.id,producto.titulo,producto.valor,producto.personaje,producto.imagen)
-        comics.push(comicNuevo)
+        let funkoNuevo = new funko(producto.id,producto.titulo,producto.valor,producto.personaje,producto.imagen,producto.editorial)
+        funkos.push(funkoNuevo)
     }
-    localStorage.setItem("comics" , JSON.stringify(comics))
+    localStorage.setItem("funkos" , JSON.stringify(funkos))
 }
 let productoEnCarrito = localStorage.getItem("productoEnCarrito")||[]
 
-if(localStorage.getItem("comics") != undefined){
-    comicsLS = JSON.parse(localStorage.getItem("comics")) || []
+if(localStorage.getItem("funkos") != undefined){
+    funkosLS = JSON.parse(localStorage.getItem("funkos")) || []
 }else{
    
    
-    cargarComics()
+    cargarFunkos()
     window.location.reload()
 }
 
 
 
 let contenedor = document.getElementById("contenedor")
-comicsLS.forEach((comic)=>{
-    let muestraComic = document.createElement("div")
-    muestraComic.innerHTML =` <div id= "${comic.id}"class="card" style="width: 18rem; ">
-    <img src="./img/${comic.imagen}" class="card-img-top" alt="${comic.titulo} de ${comic.personaje} ">
+funkosLS.forEach((funko)=>{
+    let muestrafunko = document.createElement("div")
+    muestrafunko.innerHTML =` <div id= "${funko.id}"class="card" style="width: 18rem; ">
+    <img src="./img/${funko.imagen}" class="card-img-top" alt="${funko.titulo} de ${funko.personaje} ">
     <div class="card-body"
-      <h4 class="card-title">${comic.titulo}</h4>
-      <h5>${comic.personaje}
-      <p class="card-text">El valor del comic es de ${comic.valor}</p>
-      <button id="agregarBtn ${comic.id}" " class="agregarBtn btn-outline-success btnComprar ${comic.id}">Agregar al carrito</button>
+      <h4 class="card-title">${funko.titulo}</h4>
+      <h5>${funko.personaje}
+      <p class="card-text">El valor del funko es de ${funko.valor}</p>
+      <button id="agregarBtn ${funko.id}" " class="agregarBtn btn-outline-success btnComprar ${funko.id}">Agregar al carrito</button>
       </div>
   </div>`
-    contenedor.append(muestraComic)
+    contenedor.append(muestrafunko)
     
-     let btnCompra = document.getElementsByClassName(`btnComprar ${comic.id}`)
+     let btnCompra = document.getElementsByClassName(`btnComprar ${funko.id}`)
      for(let compra of btnCompra){
      compra.addEventListener("click", ()=>{
-        console.log(comic)
-        agregarAlCarrito(comic)
+        console.log(funko)
+        agregarAlCarrito(funko)
         Toastify({
-            text: "Haz agregado este comic al carrito",
+            text: "Haz agregado este funko al carrito",
             className: "info",
             
             style: {
@@ -78,56 +79,67 @@ comicsLS.forEach((comic)=>{
 })
     const buscador = document.querySelector('#buscador');
     const botonBuscador = document.querySelector('#botonBuscador');
-    const resultadoComic = document.querySelector('#resultado')
-    buscador.addEventListener('keyup', e => {
+    const resultadofunko = document.querySelector('#resultado')
+    botonBuscador.addEventListener("click" , e => {
+    
+        e.preventDefault()
+        const texto = buscador.value.toLowerCase();
 
-        let prueba = e.target.value
-    
-         botonBuscador.addEventListener("click" , e => {
-    
-            e.preventDefault()
-    
-            contenedor.innerHTML = ''
-            
-             const texto = buscador.value.toLowerCase();
-            
-            if(comicsLS.includes(texto , prueba)){
-    
-                contenedor.innerHTML += ` <div id= "${[comicsls.id](comicsls.id)}"class="card" style="width: 18rem;">
-    
-                <img src="./img/${comicsLS.imagen}" class="card-img-top" alt="${comicsLS.titulo} de ${comicsLS.personaje} ">
-    
-                <div class="card-body"
-    
-                    <h4 class="card-title">${comicsLS.titulo}</h4>
-    
-                    <h5>${comicsLS.personaje}
-    
-                    <p class="card-text">El valor del comicsLS es de ${comicsLS.valor}</p>
-    
-                    <button id="agregarBtn ${[comicsls.id](comicsls.id)}" " class="agregarBtn btn-outline-success btnComprar ${[comicsls.id](comicsls.id)}">Agregar al carrito</button>
-    
-                    </div>
-    
-               </div>`
-    
-            } else{
-    
-            contenedor.innerHTML += ` <li> Producto no encontrado ... <li>`
-    
-        }
-    
+        const filterArray = funkosLS.filter(e => {
+            if(e.personaje.toLowerCase().includes(texto) || e.editorial.toLowerCase().includes(texto) || e.titulo.toLowerCase().includes(texto)){
+                return e
+            }
+        });
+        console.log(filterArray)
+        contenedor.innerHTML = ''
+
+        filterArray.map(e => {
+                  contenedor.innerHTML += ` <div id="${(e.id)}" class="card" style="width: 18rem;">
+
+            <img src="./img/${e.imagen}" class="card-img-top" alt="${e.titulo} de ${e.personaje} ">
+
+            <div class="card-body"
+
+                <h4 class="card-title">${e.titulo}</h4>
+
+                <h5>${e.personaje}
+
+                <p class="card-text">El valor del ${e.titulo} es de ${e.valor}</p>
+
+                <button id="agregarBtn ${(e.id)}" " class="agregarBtn btn-outline-success botonComprarComic ${e.id}">Agregar al carrito</button>
+
+                </div>
+
+           </div>`
+           let btnCompra = document.getElementsByClassName(`botonComprarComic ${e.id}`)
+           for(let compra of btnCompra){
+           compra.addEventListener("click", ()=>{
+              console.log(e)
+              agregarAlCarrito(e)
+              Toastify({
+                  text: "Haz agregado este comic al carrito",
+                  className: "info",
+                  
+                  style: {
+                    background: "linear-gradient(to right, black, white)",
+                    color: "black",
+                    
+                  }
+                }).showToast();
+          
+           })
+           }
         })
-    
-     })
+       
+    })
     
     
     
 
 
 
-function agregarAlCarrito(comic){
-    productoEnCarrito.push(comic)
+function agregarAlCarrito(funko){
+    productoEnCarrito.push(funko)
     cargarProductosCarrito(productoEnCarrito)
     localStorage.setItem("productoDelCarrito" , JSON.stringify(productoEnCarrito))
     localStorage.setItem("productoCargado" , JSON.stringify(cargarProductosCarrito))
@@ -168,15 +180,15 @@ let parrafoCompra = document.getElementById(`precioTotal`)
 function cargarProductosCarrito(array){
 
     modalBody.innerHTML = ""
-    array.forEach((comic)=>{
+    array.forEach((funko)=>{
 
-        modalBody.innerHTML += ` <div id= "${comic.id}"class="card" style="width: 18rem;">
-        <img src="./img/${comic.imagen}" class="card-img-top" alt="${comic.titulo} de ${comic.personaje} ">
+        modalBody.innerHTML += ` <div id= "${funko.id}"class="card" style="width: 18rem;">
+        <img src="./img/${funko.imagen}" class="card-img-top" alt="${funko.titulo} de ${funko.personaje} ">
         <div class="card-body"
-          <h4 class="card-title">${comic.titulo}</h4>
-          <h5>${comic.personaje}
-          <p class="card-text">El valor del comic es de ${comic.valor}</p>
-          <button id="agregarBtn ${comic.id}" " class="agregarBtn btn-outline-success btnComprar ${comic.id}">Agregar al carrito</button>
+          <h4 class="card-title">${funko.titulo}</h4>
+          <h5>${funko.personaje}
+          <p class="card-text">El valor del funko es de ${funko.valor}</p>
+          <button id="agregarBtn ${funko.id}" " class="agregarBtn btn-outline-success btnComprar ${funko.id}">Agregar al carrito</button>
           </div>
       </div>`
     })

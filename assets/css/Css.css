@@ -5,7 +5,7 @@
 }
 
 .body {
-  background-color: rgba(3, 3, 3, 0.336);
+  background-image: url(https://i.pinimg.com/originals/3e/8b/91/3e8b91de36453997239265b4795817e5.jpg);
   height: auto;
   width: 100%;
 }
@@ -22,12 +22,13 @@
 }
 .header .listaHeader li {
   margin: 5px;
+  font-size: 20px;
 }
 .header .listaHeader a {
-  color: red;
+  color: white;
 }
 .header .listaHeader a:hover {
-  color: green;
+  color: red;
   border: 1px solid green;
   border-radius: 5px;
 }
@@ -40,21 +41,37 @@
 .mainIndex .contenedorTituloMain .tituloMain {
   font-size: 50px;
   font-family: Georgia, "Times New Roman", Times, serif;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.705);
+}
+.mainIndex .tituloIndex {
+  font-size: 35px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.705);
 }
 
 .mainNosotros .contenedorTituloNosotros {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.705);
 }
 .mainNosotros .contenedorTituloNosotros .tituloNosotros {
   font-size: 50px;
   font-family: Georgia, "Times New Roman", Times, serif;
+  background-color: rgba(0, 0, 0, 0.705);
+  color: white;
 }
 .mainNosotros .parrafoNosotros {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 20px;
-  background-color: rgba(37, 34, 34, 0.24);
+  background-color: rgba(0, 0, 0, 0.705);
+  color: white;
+}
+.mainNosotros .ubicacion {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.705);
 }
 
 .imgNos {
@@ -64,10 +81,16 @@
 #contenedor {
   display: flex;
   flex-wrap: wrap;
+  background-color: rgba(0, 0, 0, 0.705);
 }
 #contenedor .card {
   margin: 5px;
   columns: 3;
-  width: 18rem;
+  width: 25px;
   border: 5px, solid, red;
+}
+
+.footer {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.705);
 }/*# sourceMappingURL=Css.css.map */
